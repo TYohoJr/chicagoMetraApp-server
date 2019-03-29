@@ -34,11 +34,7 @@ app.post('/apiTest', (req, res) =>{
 app.get("/apiTest", (req, res) => {
     request(
         {
-            url: `https://128fe84bef8a036dd243efba9da63d92:4c6adc845d845e7e64552abe62b5ddfb@gtfsapi.metrarail.com/gtfs/positions`,
-            headers: {
-                "username": `128fe84bef8a036dd243efba9da63d92`,
-                "password": `4c6adc845d845e7e64552abe62b5ddfb`
-            },
+            url: `https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@gtfsapi.metrarail.com/gtfs/positions`,
             json: true
         },
         function (error, response, body) {
