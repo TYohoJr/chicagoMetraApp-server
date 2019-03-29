@@ -25,38 +25,11 @@ app.listen(process.env.PORT || 8080, () => {
     }
 })
 
-app.get('/get-alerts', (req, res) => {
+app.post('/access-api', (req, res) => {
+    console.log(req.body)
     request(
         {
-            url: `https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@gtfsapi.metrarail.com/gtfs/alerts`,
-            json: true
-        },
-        function (error, response, body) {
-            res.json({
-                body
-            })
-        }
-    );
-})
-
-app.get('/get-trips', (req, res) => {
-    request(
-        {
-            url: `https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@gtfsapi.metrarail.com/gtfs/schedule/trips`,
-            json: true
-        },
-        function (error, response, body) {
-            res.json({
-                body
-            })
-        }
-    );
-})
-
-app.get('/get-calendar-dates', (req, res) => {
-    request(
-        {
-            url: `https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@gtfsapi.metrarail.com/gtfs/schedule/calendar_dates`,
+            url: `https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@gtfsapi.metrarail.com/gtfs/${req.body.url}`,
             json: true
         },
         function (error, response, body) {
