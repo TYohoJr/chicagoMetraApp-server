@@ -38,7 +38,6 @@ app.get("/apiTest", (req, res) => {
             json: true
         },
         function (error, response, body) {
-            // Send the array of products back to the front-end
             res.json({
                 body: body
             })
